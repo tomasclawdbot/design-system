@@ -1,18 +1,17 @@
-// Server Component - Performance optimization (vercel-labs/next-skills)
-// See /skills/vercel-labs-next-skills.md
+"use client";
 
-import { Metadata } from "next";
-import Header from "@/components/Header";
-import Manifesto from "@/components/Manifesto";
-import ComponentShowcase from "@/components/ComponentShowcase";
-import DesignValues from "@/components/DesignValues";
-import Footer from "@/components/Footer";
-import { Toaster } from "@/components/ui/sonner";
+// Client Component - Required for onClick handlers and dynamic imports with ssr: false
+// Using CSS animations (no framer-motion, no SSR issues)
 
-export const metadata: Metadata = {
-  title: "Design System | Built with Intention",
-  description: "A design system inspired by 7 thinkers. Creates software as art, but never at the expense of function.",
-};
+import dynamic from "next/dynamic";
+
+// Dynamic imports to avoid SSR issues with client components
+const Header = dynamic(() => import("@/components/Header"), { ssr: false });
+const Manifesto = dynamic(() => import("@/components/Manifesto"), { ssr: false });
+const ComponentShowcase = dynamic(() => import("@/components/ComponentShowcase"), { ssr: false });
+const DesignValues = dynamic(() => import("@/components/DesignValues"), { ssr: false });
+const Footer = dynamic(() => import("@/components/Footer"), { ssr: false });
+const Toaster = dynamic(() => import("@/components/ui/sonner").then(mod => mod.Toaster), { ssr: false });
 
 export default function Home() {
   return (
