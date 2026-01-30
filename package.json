@@ -1,7 +1,17 @@
 {
   "name": "design-system",
   "version": "0.1.0",
-  "private": true,
+  "description": "A design system built with intention, inspired by 7 thinkers. Creates software as art, but never at the expense of function.",
+  "private": false,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tomasshaggy/design-system"
+  },
+  "author": {
+    "name": "Tomas",
+    "url": "https://github.com/tomasshaggy"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
