@@ -42,6 +42,14 @@
 - **Elevated dialog component** — Polished modal patterns
 
 ## Source
-- Tweet: https://x.com/raphaelsalaja/status/2017261022600413574
+- Tweet (2026-01-30): https://x.com/raphaelsalaja/status/2017261022600413574
 - Website: raphaelsalaja.com
 - GitHub: github.com/raphaelsalaja
+
+## Applied in This Project
+
+- **framer-motion** installed for smooth animations
+- **Natural easing** [0.16, 1, 0.3, 1] applied to all components
+- **Stagger reveals** for list/grid items
+- **Micro-interactions** on hover/tap states
+- **Origin-aware** entrance animations
