@@ -2,15 +2,12 @@
 // See /skills/vercel-labs-next-skills.md
 
 import { Metadata } from "next";
-import dynamic from "next/dynamic";
-
-// Dynamic import to avoid SSR issues with framer-motion
-const Header = dynamic(() => import("@/components/Header"), { ssr: false });
-const Manifesto = dynamic(() => import("@/components/Manifesto"), { ssr: false });
-const ComponentShowcase = dynamic(() => import("@/components/ComponentShowcase"), { ssr: false });
-const DesignValues = dynamic(() => import("@/components/DesignValues"), { ssr: false });
-const Footer = dynamic(() => import("@/components/Footer"), { ssr: false });
-const Toaster = dynamic(() => import("@/components/ui/sonner").then(mod => mod.Toaster), { ssr: false });
+import Header from "@/components/Header";
+import Manifesto from "@/components/Manifesto";
+import ComponentShowcase from "@/components/ComponentShowcase";
+import DesignValues from "@/components/DesignValues";
+import Footer from "@/components/Footer";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Design System | Built with Intention",

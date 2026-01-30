@@ -1,14 +1,10 @@
 // Manifesto Component
 // Shows the 7 Thinkers and their principles
 // Following raphaelsalaja's open knowledge principle: Document everything, share freely
-// Animation: Origin-aware, stagger reveal from top-left
+// Using CSS animations (no framer-motion, no SSR issues)
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { motion, Variants } from "framer-motion";
-
-// Natural easing - framer-motion compatible cubic bezier
-const ease = [0.16, 1, 0.3, 1] as const;
 
 const principles = [
   {
@@ -55,74 +51,37 @@ const principles = [
   }
 ];
 
-const container: Variants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.1
-    }
-  }
-};
-
-const item: Variants = {
-  hidden: { y: 20, opacity: 0 },
-  show: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.4,
-      ease
-    }
-  }
-};
-
 export default function Manifesto() {
   return (
     <section className="space-y-6">
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease }}
-        className="space-y-2"
-      >
+      <div className="space-y-2 animate-fade-up">
         <h2 className="text-3xl font-semibold tracking-tight">Manifesto</h2>
         <p className="text-muted-foreground max-w-2xl">
           Creates software as art, but never at the expense of function.
           Obsesses over details that compound, but knows when to stop.
         </p>
-      </motion.div>
+      </div>
 
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="grid gap-4 md:grid-cols-2 lg:grid-cols-3"
-      >
-        {principles.map((p) => (
-          <motion.div key={p.name} variants={item}>
-            <Card className="group hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5">
-              <CardHeader className="pb-3">
-                <div className="flex items-center justify-between">
-                  <motion.span
-                    className="text-2xl"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                  >
-                    {p.icon}
-                  </motion.span>
-                  <Badge variant="secondary">{p.thinker}</Badge>
-                </div>
-                <CardTitle className="text-lg">{p.name}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">{p.desc}</p>
-              </CardContent>
-            </Card>
-          </motion.div>
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 stagger-children">
+        {principles.map((p, i) => (
+          <Card 
+            key={p.name} 
+            className="group hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 card-animate"
+            style={{ animationDelay: `${i * 0.08}s` }}
+          >
+            <CardHeader className="pb-3">
+              <div className="flex items-center justify-between">
+                <span className="text-2xl icon-hover">{p.icon}</span>
+                <Badge variant="secondary">{p.thinker}</Badge>
+              </div>
+              <CardTitle className="text-lg">{p.name}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">{p.desc}</p>
+            </CardContent>
+          </Card>
         ))}
-      </motion.div>
+      </div>
     </section>
   );
 }
