@@ -8,6 +8,10 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
 
+// See /skills/ for reference guides
+// - raphaelsalaja.md: Open knowledge, living docs
+// - vercel-labs-next-skills.md: Next.js performance
+
 // Design Principles - The 7 Thinkers
 const principles = [
   {
@@ -52,6 +56,13 @@ const principles = [
     desc: "Amplify humans, never replace. Build tools that understand interfaces.",
     icon: "⬡"
   }
+];
+
+// Performance Principles (from vercel-labs/next-skills)
+const performance = [
+  { label: "Server Components", status: "default" },
+  { label: "Proper Caching", status: "implemented" },
+  { label: "Optimized Loading", status: "skeleton" }
 ];
 
 // Component Showcase
@@ -234,6 +245,11 @@ export default function Home() {
         <div className="max-w-6xl mx-auto flex items-center justify-between text-sm text-muted-foreground">
           <p>Design System v1.0</p>
           <p>Inspired by @ryolu_, @emilkowalski, @raunofreiberg, @nandafyi, @joshpuckett, @raphaelsalaja, @avstorm, @benjitaylor</p>
+        </div>
+        <div className="max-w-6xl mx-auto mt-4 pt-4 border-t">
+          <p className="text-xs">
+            Skills: <a href="/skills/README.md" className="hover:underline">see /skills/</a> for reference guides
+          </p>
         </div>
       </footer>
     </div>

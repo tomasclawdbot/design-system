@@ -4,6 +4,15 @@
 
 A design system built with intention, inspired by 7 thinkers who shape how we think about design, function, and craft.
 
+## Skills
+
+This project uses skill references from Obsidian and external sources:
+
+- **raphaelsalaja.md** — Open knowledge, living docs, no paywalls
+- **vercel-labs-next-skills.md** — Next.js App Router best practices
+
+See [`/skills/`](skills/) directory for full references.
+
 ## The 7 Thinkers
 
 | Thinker | Principle | Contribution |
