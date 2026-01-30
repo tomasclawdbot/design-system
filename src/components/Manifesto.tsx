@@ -5,7 +5,10 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
+
+// Natural easing - framer-motion compatible cubic bezier
+const ease = [0.16, 1, 0.3, 1] as const;
 
 const principles = [
   {
@@ -52,7 +55,7 @@ const principles = [
   }
 ];
 
-const container = {
+const container: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -63,14 +66,14 @@ const container = {
   }
 };
 
-const item = {
+const item: Variants = {
   hidden: { y: 20, opacity: 0 },
   show: {
     y: 0,
     opacity: 1,
     transition: {
       duration: 0.4,
-      ease: [0.16, 1, 0.3, 1]
+      ease
     }
   }
 };
@@ -81,7 +84,7 @@ export default function Manifesto() {
       <motion.div
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.5, ease }}
         className="space-y-2"
       >
         <h2 className="text-3xl font-semibold tracking-tight">Manifesto</h2>

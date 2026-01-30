@@ -4,7 +4,10 @@
 // Animation: Smooth fade in, subtle hover lift
 
 import { Card } from "@/components/ui/card";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
+
+// Natural easing - framer-motion compatible cubic bezier
+const ease = [0.16, 1, 0.3, 1] as const;
 
 const values = [
   {
@@ -21,7 +24,7 @@ const values = [
   }
 ];
 
-const container = {
+const container: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -32,14 +35,14 @@ const container = {
   }
 };
 
-const item = {
+const item: Variants = {
   hidden: { y: 20, opacity: 0 },
   show: {
     y: 0,
     opacity: 1,
     transition: {
       duration: 0.5,
-      ease: [0.16, 1, 0.3, 1]
+      ease
     }
   }
 };
@@ -50,7 +53,7 @@ export default function DesignValues() {
       <motion.div
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ delay: 0.3, duration: 0.5, ease }}
         className="space-y-2"
       >
         <h2 className="text-3xl font-semibold tracking-tight">Design Values</h2>
